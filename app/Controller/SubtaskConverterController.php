@@ -21,12 +21,23 @@ class SubtaskConverterController extends BaseController
         )));
     }
 
+    public function show_link()
+    {
+        $task = $this->getTask();
+        $subtask = $this->getSubtask();
+
+        $this->response->html($this->template->render('subtask_converter/show_link', array(
+            'subtask' => $subtask,
+            'task' => $task,
+        )));
+    }
+
     public function save()
     {
         $project = $this->getProject();
         $subtask = $this->getSubtask();
 
-        $task_id = $this->subtaskTaskConversionModel->convertToTask($project['id'], $subtask['id']);
+        $task_id = $this->subtaskTaskConversionModel->convertToTask($project['id'], $subtask['id'], isset($_GET['link']) && $_GET['link'] == '1');
 
         if ($task_id !== false) {
             $this->flash->success(t('Subtask converted to task successfully.'));

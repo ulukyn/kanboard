@@ -101,6 +101,7 @@ class TaskLinkModel extends Base
                         self::TABLE.'.id',
                         self::TABLE.'.opposite_task_id AS task_id',
                         LinkModel::TABLE.'.label',
+                        LinkModel::TABLE.'.id',
                         TaskModel::TABLE.'.title',
                         TaskModel::TABLE.'.is_active',
                         TaskModel::TABLE.'.project_id',
@@ -141,15 +142,29 @@ class TaskLinkModel extends Base
         $result = array();
 
         foreach ($links as $link) {
-            if (! isset($result[$link['label']])) {
+            if (!isset($result[$link['label']]) && $link['id'] != '1') {
                 $result[$link['label']] = array();
             }
-
-            $result[$link['label']][] = $link;
+			if ($link['id'] != '1')
+				$result[$link['label']][] = $link;
         }
 
         return $result;
     }
+
+	public function getAllClones($task_id)
+    {
+        return $this->db
+                    ->table(self::TABLE)
+                    ->columns(
+                        self::TABLE.'.id',
+                        self::TABLE.'.link_id',
+                        self::TABLE.'.opposite_task_id AS task_id'
+                    )
+                    ->eq(self::TABLE.'.task_id', $task_id)
+                    ->eq(self::TABLE.'.link_id', 1)
+                    ->findAll();
+	}
 
     /**
      * Create a new link
