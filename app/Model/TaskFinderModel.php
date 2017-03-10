@@ -100,7 +100,7 @@ class TaskFinderModel extends Base
                 '(SELECT COUNT(*) FROM '.TaskFileModel::TABLE.' WHERE task_id=tasks.id) AS nb_files',
                 '(SELECT COUNT(*) FROM '.SubtaskModel::TABLE.' WHERE '.SubtaskModel::TABLE.'.task_id=tasks.id) AS nb_subtasks',
                 '(SELECT COUNT(*) FROM '.SubtaskModel::TABLE.' WHERE '.SubtaskModel::TABLE.'.task_id=tasks.id AND status=2) AS nb_completed_subtasks',
-                '(SELECT COUNT(*) FROM '.TaskLinkModel::TABLE.' WHERE '.TaskLinkModel::TABLE.'.task_id = tasks.id) AS nb_links',
+                '(SELECT COUNT(*) FROM '.TaskLinkModel::TABLE.' WHERE '.TaskLinkModel::TABLE.'.task_id = tasks.id AND '.TaskLinkModel::TABLE.'.link_id != 1) AS nb_links',
                 '(SELECT COUNT(*) FROM '.TaskExternalLinkModel::TABLE.' WHERE '.TaskExternalLinkModel::TABLE.'.task_id = tasks.id) AS nb_external_links',
                 '(SELECT DISTINCT 1 FROM '.TaskLinkModel::TABLE.' WHERE '.TaskLinkModel::TABLE.'.task_id = tasks.id AND '.TaskLinkModel::TABLE.'.link_id = 9) AS is_milestone',
                 TaskModel::TABLE.'.id',
@@ -309,8 +309,7 @@ class TaskFinderModel extends Base
                 'uc.username AS creator_username',
                 'uc.name AS creator_name',
                 CategoryModel::TABLE.'.description AS category_description',
-                ColumnModel::TABLE.'.position AS column_position'
-            )
+                ColumnModel::TABLE.'.position AS column_position')
             ->join(UserModel::TABLE, 'id', 'owner_id', TaskModel::TABLE)
             ->left(UserModel::TABLE, 'uc', 'id', TaskModel::TABLE, 'creator_id')
             ->join(CategoryModel::TABLE, 'id', 'category_id', TaskModel::TABLE)
@@ -364,18 +363,17 @@ class TaskFinderModel extends Base
      * Count the number of tasks for a given column and status
      *
      * @access public
-     * @param  integer $project_id Project id
-     * @param  integer $column_id Column id
-     * @param  array   $status
-     * @return int
+     * @param  integer   $project_id   Project id
+     * @param  integer   $column_id    Column id
+     * @return integer
      */
-    public function countByColumnId($project_id, $column_id, array $status = array(TaskModel::STATUS_OPEN))
+    public function countByColumnId($project_id, $column_id)
     {
         return $this->db
                     ->table(TaskModel::TABLE)
                     ->eq('project_id', $project_id)
                     ->eq('column_id', $column_id)
-                    ->in('is_active', $status)
+                    ->eq('is_active', 1)
                     ->count();
     }
 

@@ -46,7 +46,14 @@ class TaskStatusModel extends Base
     public function close($task_id)
     {
         $this->subtaskStatusModel->closeAll($task_id);
-        return $this->changeStatus($task_id, TaskModel::STATUS_CLOSED, time(), TaskModel::EVENT_CLOSE);
+        $ret = $this->changeStatus($task_id, TaskModel::STATUS_CLOSED, time(), TaskModel::EVENT_CLOSE);
+        if ($ret) {
+			// Close linked subtask
+			foreach ($this->taskLinkModel->getAllClones($task_id) as $link) {
+				$this->subtaskStatusModel->closeStatus($link['task_id']);
+			}
+		}
+        return $ret;
     }
 
     /**
@@ -139,6 +146,6 @@ class TaskStatusModel extends Base
                     ->table(TaskModel::TABLE)
                     ->eq('id', $task_id)
                     ->eq('is_active', $status)
-                    ->exists();
+                    ->count() === 1;
     }
 }

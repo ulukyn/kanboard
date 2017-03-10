@@ -71,6 +71,28 @@ class SubtaskStatusModel extends Base
         return $this->subtaskModel->update($values) ? $status : false;
     }
 
+     /**
+     * Change the status of subtask
+     *
+     * @access public
+     * @param  integer  $subtask_id
+     * @return boolean|integer
+     */
+    public function closeStatus($subtask_id)
+    {
+        $subtask = $this->subtaskModel->getById($subtask_id);
+        $status = 2;
+
+        $values = array(
+            'id' => $subtask['id'],
+            'status' => $status,
+            'task_id' => $subtask['task_id'],
+        );
+
+        return $this->subtaskModel->update($values) ? $status : false;
+    }
+
+
     /**
      * Close all subtasks of a task
      *
