@@ -34,9 +34,11 @@ class SubtaskConverterController extends BaseController
 
     public function save()
     {
+        echo '<br />Creating and linking subtask...<br /><br />';
+        $time = time();
+        $task = $this->getTask();
         $project = $this->getProject();
         $subtask = $this->getSubtask();
-
         $task_id = $this->subtaskTaskConversionModel->convertToTask($project['id'], $subtask['id'], isset($_GET['link']) && $_GET['link'] == '1');
 
         if ($task_id !== false) {
@@ -45,6 +47,6 @@ class SubtaskConverterController extends BaseController
             $this->flash->failure(t('Unable to convert the subtask.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $project['id'], 'task_id' => $task_id)), true);
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $project['id'], 'task_id' => $task['id']), 'subtasks'), true);
     }
 }

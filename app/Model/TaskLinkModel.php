@@ -145,14 +145,14 @@ class TaskLinkModel extends Base
             if (!isset($result[$link['label']]) && $link['id'] != '1') {
                 $result[$link['label']] = array();
             }
-			if ($link['id'] != '1')
-				$result[$link['label']][] = $link;
+            if ($link['id'] != '1')
+                $result[$link['label']][] = $link;
         }
 
         return $result;
     }
 
-	public function getAllClones($task_id)
+    public function getAllClones($task_id)
     {
         return $this->db
                     ->table(self::TABLE)
@@ -164,7 +164,7 @@ class TaskLinkModel extends Base
                     ->eq(self::TABLE.'.task_id', $task_id)
                     ->eq(self::TABLE.'.link_id', 1)
                     ->findAll();
-	}
+    }
 
     /**
      * Create a new link
@@ -175,11 +175,12 @@ class TaskLinkModel extends Base
      * @param  integer   $link_id            Link id
      * @return integer|boolean
      */
-    public function create($task_id, $opposite_task_id, $link_id)
+    public function create($task_id, $opposite_task_id, $link_id, $opposite_link_id=false, $fire_event=true)
     {
         $this->db->startTransaction();
 
-        $opposite_link_id = $this->linkModel->getOppositeLinkId($link_id);
+        if (!$opposite_link_id);
+            $opposite_link_id = $this->linkModel->getOppositeLinkId($link_id);
         $task_link_id1 = $this->createTaskLink($task_id, $opposite_task_id, $link_id);
         $task_link_id2 = $this->createTaskLink($opposite_task_id, $task_id, $opposite_link_id);
 
@@ -187,9 +188,9 @@ class TaskLinkModel extends Base
             $this->db->cancelTransaction();
             return false;
         }
-
         $this->db->closeTransaction();
-        $this->fireEvents(array($task_link_id1, $task_link_id2), self::EVENT_CREATE_UPDATE);
+        if ($fire_event)
+            $this->fireEvents(array($task_link_id1, $task_link_id2), self::EVENT_CREATE_UPDATE);
 
         return $task_link_id1;
     }
