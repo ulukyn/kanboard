@@ -11,7 +11,7 @@
             <?= $this->modal->confirm('clone', t('Convert to task'), 'SubtaskConverterController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id'])) ?>
         </li>
         <li>
-            <?= $this->modal->confirm('code-fork', t('Clone and link to task'), 'SubtaskConverterController', 'show_link', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id'])) ?>
+            <?= $this->modal->confirm('code-fork', t('Clone and link to task'), 'SubtaskConverterController', 'save', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id'], 'link' => '1')) ?>
         </li>
     </ul>
 </div>
