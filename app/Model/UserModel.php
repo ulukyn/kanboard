@@ -286,7 +286,11 @@ class UserModel extends Base
      */
     public function disable($user_id)
     {
-        return $this->db->table(self::TABLE)->eq('id', $user_id)->update(array('is_active' => 0));
+        $this->db->startTransaction();
+        $result1 = $this->db->table(self::TABLE)->eq('id', $user_id)->update(array('is_active' => 0));
+        $result2 = $this->db->table(ProjectModel::TABLE)->eq('is_private', 1)->eq('owner_id', $user_id)->update(array('is_active' => 0));
+        $this->db->closeTransaction();
+        return $result1 && $result2;
     }
 
     /**
@@ -375,5 +379,21 @@ class UserModel extends Base
                     ->table(self::TABLE)
                     ->eq('id', $user_id)
                     ->save(array('token' => ''));
+    }
+
+    public function getOrCreateExternalUserId($username, $name, $externalIdColumn, $externalId)
+    {
+        $userId = $this->db->table(self::TABLE)->eq($externalIdColumn, $externalId)->findOneColumn('id');
+
+        if (empty($userId)) {
+            $userId = $this->create(array(
+                'username' => $username,
+                'name' => $name,
+                'is_ldap_user' => 1,
+                $externalIdColumn => $externalId,
+            ));
+        }
+
+        return $userId;
     }
 }

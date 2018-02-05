@@ -20,7 +20,7 @@ define('LOG_FILE', DATA_DIR.DIRECTORY_SEPARATOR.'debug.log');
 define('PLUGINS_DIR', 'plugins');
 
 // Plugins directory URL
-define('PLUGIN_API_URL', 'https://kanboard.net/plugins.json');
+define('PLUGIN_API_URL', 'https://kanboard.org/plugins.json');
 
 // Enable/Disable plugin installer
 define('PLUGIN_INSTALLER', true);
@@ -84,6 +84,9 @@ define('DB_SSL_CERT', null);
 
 // Mysql SSL CA
 define('DB_SSL_CA', null);
+
+// Mysql SSL server verification, set to false if you don't want the Mysql driver to validate the certificate CN
+define('DB_VERIFY_SERVER_CERT', null);
 
 // Enable LDAP authentication (false by default)
 define('LDAP_AUTH', false);
@@ -238,5 +241,5 @@ define('HTTP_VERIFY_SSL_CERTIFICATE', true);
 // TOTP (2FA) issuer name
 define('TOTP_ISSUER', 'Kanboard');
 
-// Maximum number of events stored in the table "project_activities"
-define('PROJECT_ACTIVITIES_MAX_EVENTS', 10000);
+// Comma separated list of fields to not synchronize when using external authentication providers
+define('EXTERNAL_AUTH_EXCLUDE_FIELDS', 'username');

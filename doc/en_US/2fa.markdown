@@ -12,7 +12,7 @@ There are many software compatible with the standard TOTP system.
 For example, you can use these applications:
 
 - [Google Authenticator](https://github.com/google/google-authenticator/) (Android, iOS, Blackberry)
-- [FreeOTP](https://fedorahosted.org/freeotp/) (Android, iOS)
+- [FreeOTP](https://freeotp.github.io/) (Android, iOS)
 - [OATH Toolkit](http://www.nongnu.org/oath-toolkit/) (Command line utility on Unix/Linux)
 
 This system can work offline and you don't necessarily need to have a mobile phone.
@@ -24,7 +24,7 @@ Setup
 2. On the left, click on **Two factor authentication** and check the box
 3. A secret key is generated for you
 
-![2FA](screenshots/2fa.png)
+![2FA](../screenshots/2fa.png)
 
 - You have to save the secret key in your TOTP software. If you use a smartphone, the easiest solution is to scan the QR code with FreeOTP or Google Authenticator.
 - Each time you will open a new session, a new code will be asked

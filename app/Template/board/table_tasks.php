@@ -3,7 +3,7 @@
     <?php foreach ($swimlane['columns'] as $column): ?>
         <td class="
             board-column-<?= $column['id'] ?>
-            <?= $column['task_limit'] > 0 && $column['nb_tasks'] > $column['task_limit'] ? 'board-task-list-limit' : '' ?>
+            <?= $column['task_limit'] > 0 && $column['column_nb_tasks'] > $column['task_limit'] ? 'board-task-list-limit' : '' ?>
             "
         >
 
@@ -25,7 +25,10 @@
             </div>
 
             <!-- column in collapsed mode (rotated text) -->
-            <div class="board-column-collapsed">
+            <div class="board-column-collapsed board-task-list sortable-column"
+                data-column-id="<?= $column['id'] ?>"
+                data-swimlane-id="<?= $swimlane['id'] ?>"
+                data-task-limit="<?= $column['task_limit'] ?>">
                 <div class="board-rotation-wrapper">
                     <div class="board-column-title board-rotation board-toggle-column-view" data-column-id="<?= $column['id'] ?>" title="<?= t('Show this column') ?>">
                         <i class="fa fa-plus-square tooltip" title="<?= $this->text->e($column['title']) ?>"></i> <?= $this->text->e($column['title']) ?>

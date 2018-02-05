@@ -1,4 +1,4 @@
-Config file
+Config File
 ===========
 
 You can customize the default settings of Kanboard by adding a file `config.php` at the project root or in the `data` folder.
@@ -36,7 +36,7 @@ define('PLUGIN_INSTALLER', true); // Default is true
 Change default plugin directory URL:
 
 ```php
-define('PLUGIN_API_URL', 'https://kanboard.net/plugins.json');
+define('PLUGIN_API_URL', 'https://kanboard.org/plugins.json');
 ```
 
 Folder for uploaded files
@@ -273,7 +273,7 @@ define('LOG_FILE', __DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'debug
 ```
 
 Brute-force protection
----------------------
+----------------------
 
 ```php
 // Enable captcha after 3 authentication failure
@@ -336,6 +336,6 @@ define('API_AUTHENTICATION_TOKEN', 'My unique API Token');
 // TOTP (2FA) issuer name
 define('TOTP_ISSUER', 'Kanboard');
 
-// Maximum number of events stored in the table "project_activities"
-define('PROJECT_ACTIVITIES_MAX_EVENTS', 10000);
+// Comma separated list of fields to not synchronize when using external authentication providers
+define('EXTERNAL_AUTH_EXCLUDE_FIELDS', 'username');
 ```

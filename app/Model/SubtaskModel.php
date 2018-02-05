@@ -98,6 +98,24 @@ class SubtaskModel extends Base
     }
 
     /**
+     * Count by assignee and task status.
+     *
+     * @param integer $userId
+     * @return integer
+     */
+    public function countByAssigneeAndTaskStatus($userId)
+    {
+        $query = $this->db->table(self::TABLE)
+            ->eq('user_id', $userId)
+            ->eq(TaskModel::TABLE.'.is_active', TaskModel::STATUS_OPEN)
+            ->join(Taskmodel::TABLE, 'id', 'task_id');
+
+        $this->hook->reference('model:subtask:count:query', $query);
+
+        return $query->count();
+    }
+
+    /**
      * Get all subtasks for a given task
      *
      * @access public

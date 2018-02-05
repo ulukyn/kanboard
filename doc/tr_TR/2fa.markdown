@@ -12,7 +12,7 @@ Standart TOTP sistemi ile uyumlu birçok yazılım bulunmaktadır.
 Örneğin, şu uygulamaları kullanabilirsiniz:
 
 - [Google Authenticator](https://github.com/google/google-authenticator/) (Android, iOS, Blackberry)
-- [FreeOTP](https://fedorahosted.org/freeotp/) (Android, iOS)
+- [FreeOTP](https://freeotp.github.io/) (Android, iOS)
 - [OATH Toolkit Araç Seti](http://www.nongnu.org/oath-toolkit/) (Unix/Linux'da Komut satırı yardımcı programı)
 
 Bu sistem çevrimdışı çalışabilir ve mutlaka cep telefonunuz olması gerekmez.
@@ -24,7 +24,7 @@ Kurmak
 2. Sol tarafta **İki faktörlü kimlik doğrulama** seçeneğini tıklayın ve kutuyu işaretleyin
 3. Sizin için gizli bir anahtar oluşturulur.
 
-![2FA](screenshots/2fa.png)
+![2FA](../screenshots/2fa.png)
 
 - TOTP yazılımında gizli anahtarı kaydetmeniz gerekir. Akıllı telefon kullanıyorsanız, en kolay çözüm QR kodunu FreeOTP veya Google Authenticator ile taramaktır.
 - Her sefer yeni bir oturum açtığınızda, yeni bir kod sorulur

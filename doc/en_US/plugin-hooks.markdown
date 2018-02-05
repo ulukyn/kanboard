@@ -65,13 +65,13 @@ class Plugin extends Base
 
 List of merging hooks:
 
-#### controller:task:form:default
+`controller:task:form:default`
 
 - Override default values for task forms
 - Arguments:
     - `$default_values`: actual default values (array)
 
-#### controller:calendar:project:events
+`controller:calendar:project:events`
 
 - Add more events to the project calendar
 - Arguments:
@@ -79,7 +79,7 @@ List of merging hooks:
     - `$start` Calendar start date (string, ISO-8601 format)
     - `$end` Calendar` end date (string, ISO-8601 format)
 
-#### controller:calendar:user:events
+`controller:calendar:user:events`
 
 - Add more events to the user calendar
 - Arguments:
@@ -136,13 +136,16 @@ List of reference hooks:
 | Hook                                       | Description                                                   |
 |--------------------------------------------|---------------------------------------------------------------|
 | `formatter:board:query`                    | Alter database query before rendering board                   |
+| `pagination:dashboard:project:query`       | Alter database query for projects pagination on the dashboard |
 | `pagination:dashboard:task:query`          | Alter database query for tasks pagination on the dashboard    |
 | `pagination:dashboard:subtask:query`       | Alter database query for subtasks pagination on the dashboard |
 | `model:task:creation:prepare`              | Alter form values before to save a task                       |
+| `model:task:creation:aftersave`            | Retrieve Task ID after creating a task                        |
 | `model:task:modification:prepare`          | Alter form values before to edit a task                       |
 | `model:color:get-list`                     | Alter default_colors values                                   |
 | `model:subtask:modification:prepare`       | Alter form values before to save a subtask                    |
 | `model:subtask:creation:prepare`           | Alter form values before to edit a subtask                    |
+| `model:subtask:count:query`                | Alter database query for subtask count                        |
 
 
 Template Hooks
@@ -259,6 +262,7 @@ List of template hooks:
 | `template:user:integrations`                              | Integration page in user profile                   |
 | `template:user:sidebar:actions`                           | Sidebar in user profile (section actions)          |
 | `template:user:sidebar:information`                       | Sidebar in user profile (section information)      |
+| `template:user:show:profile:info`                         | User profile information                           |
 
 
 Another template hooks can be added if necessary, just ask on the issue tracker.

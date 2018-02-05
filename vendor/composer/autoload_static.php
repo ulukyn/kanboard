@@ -4,28 +4,29 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
+class ComposerStaticInitbdc3716ceecc7570f8ff9a8407f0ca0e
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        '8cd2fca4db21bffce1ad0612f7caeec4' => __DIR__ . '/..' . '/ramsey/array_column/src/array_column.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'f51af1d1e172536bcdb5baf6f649449d' => __DIR__ . '/../..' . '/app/functions.php',
-        'da6e17f7b0fa11d4819751ff2afd0bac' => __DIR__ . '/../..' . '/app/Library/password.php',
+        '8a67f3044590529ed0a5e02f9cc9c90b' => __DIR__ . '/../..' . '/app/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
+            'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Console\\' => 26,
             'SimpleQueue\\' => 12,
         ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Container\\' => 14,
         ),
         'K' => 
         array (
@@ -33,7 +34,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         ),
         'G' => 
         array (
-            'Gregwar\\Captcha\\' => 16,
+            'Gregwar\\' => 8,
         ),
         'B' => 
         array (
@@ -46,9 +47,17 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
         'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
+        ),
+        'Symfony\\Component\\Debug\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/debug',
         ),
         'Symfony\\Component\\Console\\' => 
         array (
@@ -62,13 +71,17 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
         'Kanboard\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
-        'Gregwar\\Captcha\\' => 
+        'Gregwar\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gregwar/captcha',
+            0 => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar',
         ),
         'Base32\\' => 
         array (
@@ -77,13 +90,6 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
     );
 
     public static $prefixesPsr0 = array (
-        'Z' => 
-        array (
-            'ZendXml\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/zendframework/zendxml/library',
-            ),
-        ),
         'S' => 
         array (
             'SimpleValidator' => 
@@ -100,10 +106,6 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
             'Pimple' => 
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
-            ),
-            'PicoFeed' => 
-            array (
-                0 => __DIR__ . '/..' . '/miniflux/picofeed/lib',
             ),
             'PicoDb' => 
             array (
@@ -165,11 +167,11 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Eluceo\\iCal\\Util\\ComponentUtil' => __DIR__ . '/..' . '/eluceo/ical/src/Eluceo/iCal/Util/ComponentUtil.php',
         'Eluceo\\iCal\\Util\\DateUtil' => __DIR__ . '/..' . '/eluceo/ical/src/Eluceo/iCal/Util/DateUtil.php',
         'Eluceo\\iCal\\Util\\PropertyValueUtil' => __DIR__ . '/..' . '/eluceo/ical/src/Eluceo/iCal/Util/PropertyValueUtil.php',
-        'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
-        'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',
-        'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/ImageFileHandler.php',
-        'Gregwar\\Captcha\\PhraseBuilder' => __DIR__ . '/..' . '/gregwar/captcha/PhraseBuilder.php',
-        'Gregwar\\Captcha\\PhraseBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/PhraseBuilderInterface.php',
+        'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/CaptchaBuilder.php',
+        'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/CaptchaBuilderInterface.php',
+        'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/ImageFileHandler.php',
+        'Gregwar\\Captcha\\PhraseBuilder' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/PhraseBuilder.php',
+        'Gregwar\\Captcha\\PhraseBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar/Captcha/PhraseBuilderInterface.php',
         'JsonRPC\\Client' => __DIR__ . '/..' . '/fguillot/json-rpc/src/JsonRPC/Client.php',
         'JsonRPC\\Exception\\AccessDeniedException' => __DIR__ . '/..' . '/fguillot/json-rpc/src/JsonRPC/Exception/AccessDeniedException.php',
         'JsonRPC\\Exception\\AuthenticationFailureException' => __DIR__ . '/..' . '/fguillot/json-rpc/src/JsonRPC/Exception/AuthenticationFailureException.php',
@@ -197,6 +199,8 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Action\\Base' => __DIR__ . '/../..' . '/app/Action/Base.php',
         'Kanboard\\Action\\CommentCreation' => __DIR__ . '/../..' . '/app/Action/CommentCreation.php',
         'Kanboard\\Action\\CommentCreationMoveTaskColumn' => __DIR__ . '/../..' . '/app/Action/CommentCreationMoveTaskColumn.php',
+        'Kanboard\\Action\\StopSubtaskTimerMoveTaskColumn' => __DIR__ . '/../..' . '/app/Action/StopSubtaskTimerMoveTaskColumn.php',
+        'Kanboard\\Action\\SubtaskTimerMoveTaskColumn' => __DIR__ . '/../..' . '/app/Action/SubtaskTimerMoveTaskColumn.php',
         'Kanboard\\Action\\TaskAssignCategoryColor' => __DIR__ . '/../..' . '/app/Action/TaskAssignCategoryColor.php',
         'Kanboard\\Action\\TaskAssignCategoryLabel' => __DIR__ . '/../..' . '/app/Action/TaskAssignCategoryLabel.php',
         'Kanboard\\Action\\TaskAssignCategoryLink' => __DIR__ . '/../..' . '/app/Action/TaskAssignCategoryLink.php',
@@ -204,6 +208,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Action\\TaskAssignColorColumn' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorColumn.php',
         'Kanboard\\Action\\TaskAssignColorLink' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorLink.php',
         'Kanboard\\Action\\TaskAssignColorOnDueDate' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorOnDueDate.php',
+        'Kanboard\\Action\\TaskAssignColorOnStartDate' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorOnStartDate.php',
         'Kanboard\\Action\\TaskAssignColorPriority' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorPriority.php',
         'Kanboard\\Action\\TaskAssignColorSwimlane' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorSwimlane.php',
         'Kanboard\\Action\\TaskAssignColorUser' => __DIR__ . '/../..' . '/app/Action/TaskAssignColorUser.php',
@@ -228,6 +233,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Action\\TaskMoveColumnCategoryChange' => __DIR__ . '/../..' . '/app/Action/TaskMoveColumnCategoryChange.php',
         'Kanboard\\Action\\TaskMoveColumnClosed' => __DIR__ . '/../..' . '/app/Action/TaskMoveColumnClosed.php',
         'Kanboard\\Action\\TaskMoveColumnNotMovedPeriod' => __DIR__ . '/../..' . '/app/Action/TaskMoveColumnNotMovedPeriod.php',
+        'Kanboard\\Action\\TaskMoveColumnOnStartDate' => __DIR__ . '/../..' . '/app/Action/TaskMoveColumnOnStartDate.php',
         'Kanboard\\Action\\TaskMoveColumnUnAssigned' => __DIR__ . '/../..' . '/app/Action/TaskMoveColumnUnAssigned.php',
         'Kanboard\\Action\\TaskOpen' => __DIR__ . '/../..' . '/app/Action/TaskOpen.php',
         'Kanboard\\Action\\TaskUpdateStartDate' => __DIR__ . '/../..' . '/app/Action/TaskUpdateStartDate.php',
@@ -290,6 +296,8 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Console\\PluginInstallCommand' => __DIR__ . '/../..' . '/app/Console/PluginInstallCommand.php',
         'Kanboard\\Console\\PluginUninstallCommand' => __DIR__ . '/../..' . '/app/Console/PluginUninstallCommand.php',
         'Kanboard\\Console\\PluginUpgradeCommand' => __DIR__ . '/../..' . '/app/Console/PluginUpgradeCommand.php',
+        'Kanboard\\Console\\ProjectActivityArchiveCommand' => __DIR__ . '/../..' . '/app/Console/ProjectActivityArchiveCommand.php',
+        'Kanboard\\Console\\ProjectArchiveCommand' => __DIR__ . '/../..' . '/app/Console/ProjectArchiveCommand.php',
         'Kanboard\\Console\\ProjectDailyColumnStatsExportCommand' => __DIR__ . '/../..' . '/app/Console/ProjectDailyColumnStatsExportCommand.php',
         'Kanboard\\Console\\ProjectDailyStatsCalculationCommand' => __DIR__ . '/../..' . '/app/Console/ProjectDailyStatsCalculationCommand.php',
         'Kanboard\\Console\\ResetPasswordCommand' => __DIR__ . '/../..' . '/app/Console/ResetPasswordCommand.php',
@@ -299,6 +307,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Console\\TaskOverdueNotificationCommand' => __DIR__ . '/../..' . '/app/Console/TaskOverdueNotificationCommand.php',
         'Kanboard\\Console\\TaskTriggerCommand' => __DIR__ . '/../..' . '/app/Console/TaskTriggerCommand.php',
         'Kanboard\\Console\\TransitionExportCommand' => __DIR__ . '/../..' . '/app/Console/TransitionExportCommand.php',
+        'Kanboard\\Console\\VersionCommand' => __DIR__ . '/../..' . '/app/Console/VersionCommand.php',
         'Kanboard\\Console\\WorkerCommand' => __DIR__ . '/../..' . '/app/Console/WorkerCommand.php',
         'Kanboard\\Controller\\ActionController' => __DIR__ . '/../..' . '/app/Controller/ActionController.php',
         'Kanboard\\Controller\\ActionCreationController' => __DIR__ . '/../..' . '/app/Controller/ActionCreationController.php',
@@ -475,8 +484,8 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Core\\Security\\SessionCheckProviderInterface' => __DIR__ . '/../..' . '/app/Core/Security/SessionCheckProviderInterface.php',
         'Kanboard\\Core\\Security\\Token' => __DIR__ . '/../..' . '/app/Core/Security/Token.php',
         'Kanboard\\Core\\Session\\FlashMessage' => __DIR__ . '/../..' . '/app/Core/Session/FlashMessage.php',
+        'Kanboard\\Core\\Session\\SessionHandler' => __DIR__ . '/../..' . '/app/Core/Session/SessionHandler.php',
         'Kanboard\\Core\\Session\\SessionManager' => __DIR__ . '/../..' . '/app/Core/Session/SessionManager.php',
-        'Kanboard\\Core\\Session\\SessionStorage' => __DIR__ . '/../..' . '/app/Core/Session/SessionStorage.php',
         'Kanboard\\Core\\Template' => __DIR__ . '/../..' . '/app/Core/Template.php',
         'Kanboard\\Core\\Thumbnail' => __DIR__ . '/../..' . '/app/Core/Thumbnail.php',
         'Kanboard\\Core\\Tool' => __DIR__ . '/../..' . '/app/Core/Tool.php',
@@ -484,6 +493,8 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Core\\User\\Avatar\\AvatarManager' => __DIR__ . '/../..' . '/app/Core/User/Avatar/AvatarManager.php',
         'Kanboard\\Core\\User\\Avatar\\AvatarProviderInterface' => __DIR__ . '/../..' . '/app/Core/User/Avatar/AvatarProviderInterface.php',
         'Kanboard\\Core\\User\\GroupSync' => __DIR__ . '/../..' . '/app/Core/User/GroupSync.php',
+        'Kanboard\\Core\\User\\UserBackendProviderInterface' => __DIR__ . '/../..' . '/app/Core/User/UserBackendProviderInterface.php',
+        'Kanboard\\Core\\User\\UserManager' => __DIR__ . '/../..' . '/app/Core/User/UserManager.php',
         'Kanboard\\Core\\User\\UserProfile' => __DIR__ . '/../..' . '/app/Core/User/UserProfile.php',
         'Kanboard\\Core\\User\\UserProperty' => __DIR__ . '/../..' . '/app/Core/User/UserProperty.php',
         'Kanboard\\Core\\User\\UserProviderInterface' => __DIR__ . '/../..' . '/app/Core/User/UserProviderInterface.php',
@@ -572,7 +583,6 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Filter\\TaskTitleFilter' => __DIR__ . '/../..' . '/app/Filter/TaskTitleFilter.php',
         'Kanboard\\Filter\\UserNameFilter' => __DIR__ . '/../..' . '/app/Filter/UserNameFilter.php',
         'Kanboard\\Formatter\\BaseFormatter' => __DIR__ . '/../..' . '/app/Formatter/BaseFormatter.php',
-        'Kanboard\\Formatter\\BaseTaskCalendarFormatter' => __DIR__ . '/../..' . '/app/Formatter/BaseTaskCalendarFormatter.php',
         'Kanboard\\Formatter\\BoardColumnFormatter' => __DIR__ . '/../..' . '/app/Formatter/BoardColumnFormatter.php',
         'Kanboard\\Formatter\\BoardFormatter' => __DIR__ . '/../..' . '/app/Formatter/BoardFormatter.php',
         'Kanboard\\Formatter\\BoardSwimlaneFormatter' => __DIR__ . '/../..' . '/app/Formatter/BoardSwimlaneFormatter.php',
@@ -606,7 +616,6 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Helper\\FileHelper' => __DIR__ . '/../..' . '/app/Helper/FileHelper.php',
         'Kanboard\\Helper\\FormHelper' => __DIR__ . '/../..' . '/app/Helper/FormHelper.php',
         'Kanboard\\Helper\\HookHelper' => __DIR__ . '/../..' . '/app/Helper/HookHelper.php',
-        'Kanboard\\Helper\\ICalHelper' => __DIR__ . '/../..' . '/app/Helper/ICalHelper.php',
         'Kanboard\\Helper\\LayoutHelper' => __DIR__ . '/../..' . '/app/Helper/LayoutHelper.php',
         'Kanboard\\Helper\\MailHelper' => __DIR__ . '/../..' . '/app/Helper/MailHelper.php',
         'Kanboard\\Helper\\ModalHelper' => __DIR__ . '/../..' . '/app/Helper/ModalHelper.php',
@@ -747,6 +756,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\ServiceProvider\\QueueProvider' => __DIR__ . '/../..' . '/app/ServiceProvider/QueueProvider.php',
         'Kanboard\\ServiceProvider\\RouteProvider' => __DIR__ . '/../..' . '/app/ServiceProvider/RouteProvider.php',
         'Kanboard\\ServiceProvider\\SessionProvider' => __DIR__ . '/../..' . '/app/ServiceProvider/SessionProvider.php',
+        'Kanboard\\ServiceProvider\\UserProvider' => __DIR__ . '/../..' . '/app/ServiceProvider/UserProvider.php',
         'Kanboard\\Subscriber\\AuthSubscriber' => __DIR__ . '/../..' . '/app/Subscriber/AuthSubscriber.php',
         'Kanboard\\Subscriber\\BaseSubscriber' => __DIR__ . '/../..' . '/app/Subscriber/BaseSubscriber.php',
         'Kanboard\\Subscriber\\BootstrapSubscriber' => __DIR__ . '/../..' . '/app/Subscriber/BootstrapSubscriber.php',
@@ -758,6 +768,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Kanboard\\Subscriber\\TransitionSubscriber' => __DIR__ . '/../..' . '/app/Subscriber/TransitionSubscriber.php',
         'Kanboard\\User\\Avatar\\AvatarFileProvider' => __DIR__ . '/../..' . '/app/User/Avatar/AvatarFileProvider.php',
         'Kanboard\\User\\Avatar\\LetterAvatarProvider' => __DIR__ . '/../..' . '/app/User/Avatar/LetterAvatarProvider.php',
+        'Kanboard\\User\\DatabaseBackendUserProvider' => __DIR__ . '/../..' . '/app/User/DatabaseBackendUserProvider.php',
         'Kanboard\\User\\DatabaseUserProvider' => __DIR__ . '/../..' . '/app/User/DatabaseUserProvider.php',
         'Kanboard\\User\\LdapUserProvider' => __DIR__ . '/../..' . '/app/User/LdapUserProvider.php',
         'Kanboard\\User\\OAuthUserProvider' => __DIR__ . '/../..' . '/app/User/OAuthUserProvider.php',
@@ -828,74 +839,14 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'PicoDb\\StatementHandler' => __DIR__ . '/..' . '/fguillot/picodb/lib/PicoDb/StatementHandler.php',
         'PicoDb\\Table' => __DIR__ . '/..' . '/fguillot/picodb/lib/PicoDb/Table.php',
         'PicoDb\\UrlParser' => __DIR__ . '/..' . '/fguillot/picodb/lib/PicoDb/UrlParser.php',
-        'PicoFeed\\Base' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Base.php',
-        'PicoFeed\\Client\\Client' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/Client.php',
-        'PicoFeed\\Client\\ClientException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/ClientException.php',
-        'PicoFeed\\Client\\Curl' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/Curl.php',
-        'PicoFeed\\Client\\ForbiddenException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/ForbiddenException.php',
-        'PicoFeed\\Client\\HttpHeaders' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/HttpHeaders.php',
-        'PicoFeed\\Client\\InvalidCertificateException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/InvalidCertificateException.php',
-        'PicoFeed\\Client\\InvalidUrlException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/InvalidUrlException.php',
-        'PicoFeed\\Client\\MaxRedirectException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/MaxRedirectException.php',
-        'PicoFeed\\Client\\MaxSizeException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/MaxSizeException.php',
-        'PicoFeed\\Client\\Stream' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/Stream.php',
-        'PicoFeed\\Client\\TimeoutException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/TimeoutException.php',
-        'PicoFeed\\Client\\UnauthorizedException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/UnauthorizedException.php',
-        'PicoFeed\\Client\\Url' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Client/Url.php',
-        'PicoFeed\\Config\\Config' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Config/Config.php',
-        'PicoFeed\\Encoding\\Encoding' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Encoding/Encoding.php',
-        'PicoFeed\\Filter\\Attribute' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Filter/Attribute.php',
-        'PicoFeed\\Filter\\Filter' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Filter/Filter.php',
-        'PicoFeed\\Filter\\Html' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Filter/Html.php',
-        'PicoFeed\\Filter\\Tag' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Filter/Tag.php',
-        'PicoFeed\\Generator\\ContentGeneratorInterface' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Generator/ContentGeneratorInterface.php',
-        'PicoFeed\\Generator\\FileContentGenerator' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Generator/FileContentGenerator.php',
-        'PicoFeed\\Generator\\YoutubeContentGenerator' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Generator/YoutubeContentGenerator.php',
-        'PicoFeed\\Logging\\Logger' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Logging/Logger.php',
-        'PicoFeed\\Parser\\Atom' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Atom.php',
-        'PicoFeed\\Parser\\DateParser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/DateParser.php',
-        'PicoFeed\\Parser\\Feed' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Feed.php',
-        'PicoFeed\\Parser\\Item' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Item.php',
-        'PicoFeed\\Parser\\MalformedXmlException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/MalformedXmlException.php',
-        'PicoFeed\\Parser\\Parser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Parser.php',
-        'PicoFeed\\Parser\\ParserException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/ParserException.php',
-        'PicoFeed\\Parser\\ParserInterface' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/ParserInterface.php',
-        'PicoFeed\\Parser\\Rss10' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Rss10.php',
-        'PicoFeed\\Parser\\Rss20' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Rss20.php',
-        'PicoFeed\\Parser\\Rss91' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Rss91.php',
-        'PicoFeed\\Parser\\Rss92' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/Rss92.php',
-        'PicoFeed\\Parser\\XmlEntityException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/XmlEntityException.php',
-        'PicoFeed\\Parser\\XmlParser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Parser/XmlParser.php',
-        'PicoFeed\\PicoFeedException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/PicoFeedException.php',
-        'PicoFeed\\Processor\\ContentFilterProcessor' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Processor/ContentFilterProcessor.php',
-        'PicoFeed\\Processor\\ContentGeneratorProcessor' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Processor/ContentGeneratorProcessor.php',
-        'PicoFeed\\Processor\\ItemPostProcessor' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Processor/ItemPostProcessor.php',
-        'PicoFeed\\Processor\\ItemProcessorInterface' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Processor/ItemProcessorInterface.php',
-        'PicoFeed\\Processor\\ScraperProcessor' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Processor/ScraperProcessor.php',
-        'PicoFeed\\Reader\\Favicon' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Reader/Favicon.php',
-        'PicoFeed\\Reader\\Reader' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Reader/Reader.php',
-        'PicoFeed\\Reader\\ReaderException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Reader/ReaderException.php',
-        'PicoFeed\\Reader\\SubscriptionNotFoundException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Reader/SubscriptionNotFoundException.php',
-        'PicoFeed\\Reader\\UnsupportedFeedFormatException' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Reader/UnsupportedFeedFormatException.php',
-        'PicoFeed\\Scraper\\CandidateParser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Scraper/CandidateParser.php',
-        'PicoFeed\\Scraper\\ParserInterface' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Scraper/ParserInterface.php',
-        'PicoFeed\\Scraper\\RuleLoader' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Scraper/RuleLoader.php',
-        'PicoFeed\\Scraper\\RuleParser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Scraper/RuleParser.php',
-        'PicoFeed\\Scraper\\Scraper' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Scraper/Scraper.php',
-        'PicoFeed\\Serialization\\Subscription' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Serialization/Subscription.php',
-        'PicoFeed\\Serialization\\SubscriptionList' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Serialization/SubscriptionList.php',
-        'PicoFeed\\Serialization\\SubscriptionListBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Serialization/SubscriptionListBuilder.php',
-        'PicoFeed\\Serialization\\SubscriptionListParser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Serialization/SubscriptionListParser.php',
-        'PicoFeed\\Serialization\\SubscriptionParser' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Serialization/SubscriptionParser.php',
-        'PicoFeed\\Syndication\\AtomFeedBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/AtomFeedBuilder.php',
-        'PicoFeed\\Syndication\\AtomHelper' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/AtomHelper.php',
-        'PicoFeed\\Syndication\\AtomItemBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/AtomItemBuilder.php',
-        'PicoFeed\\Syndication\\FeedBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/FeedBuilder.php',
-        'PicoFeed\\Syndication\\ItemBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/ItemBuilder.php',
-        'PicoFeed\\Syndication\\Rss20FeedBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/Rss20FeedBuilder.php',
-        'PicoFeed\\Syndication\\Rss20Helper' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/Rss20Helper.php',
-        'PicoFeed\\Syndication\\Rss20ItemBuilder' => __DIR__ . '/..' . '/miniflux/picofeed/lib/PicoFeed/Syndication/Rss20ItemBuilder.php',
         'Pimple\\Container' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Container.php',
+        'Pimple\\Exception\\ExpectedInvokableException' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Exception/ExpectedInvokableException.php',
+        'Pimple\\Exception\\FrozenServiceException' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Exception/FrozenServiceException.php',
+        'Pimple\\Exception\\InvalidServiceIdentifierException' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Exception/InvalidServiceIdentifierException.php',
+        'Pimple\\Exception\\UnknownIdentifierException' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Exception/UnknownIdentifierException.php',
+        'Pimple\\Psr11\\Container' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Psr11/Container.php',
+        'Pimple\\Psr11\\ServiceLocator' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Psr11/ServiceLocator.php',
+        'Pimple\\ServiceIterator' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/ServiceIterator.php',
         'Pimple\\ServiceProviderInterface' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/ServiceProviderInterface.php',
         'Pimple\\Tests\\Fixtures\\Invokable' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/Fixtures/Invokable.php',
         'Pimple\\Tests\\Fixtures\\NonInvokable' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/Fixtures/NonInvokable.php',
@@ -903,6 +854,12 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Pimple\\Tests\\Fixtures\\Service' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/Fixtures/Service.php',
         'Pimple\\Tests\\PimpleServiceProviderInterfaceTest' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/PimpleServiceProviderInterfaceTest.php',
         'Pimple\\Tests\\PimpleTest' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/PimpleTest.php',
+        'Pimple\\Tests\\Psr11\\ContainerTest' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/Psr11/ContainerTest.php',
+        'Pimple\\Tests\\Psr11\\ServiceLocatorTest' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/Psr11/ServiceLocatorTest.php',
+        'Pimple\\Tests\\ServiceIteratorTest' => __DIR__ . '/..' . '/pimple/pimple/src/Pimple/Tests/ServiceIteratorTest.php',
+        'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
+        'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
+        'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
         'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/Psr/Log/LogLevel.php',
@@ -951,10 +908,15 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'SimpleValidator\\Validators\\Required' => __DIR__ . '/..' . '/fguillot/simple-validator/src/SimpleValidator/Validators/Required.php',
         'SimpleValidator\\Validators\\Unique' => __DIR__ . '/..' . '/fguillot/simple-validator/src/SimpleValidator/Validators/Unique.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
+        'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
+        'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
+        'Symfony\\Component\\Console\\CommandLoader\\FactoryCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/FactoryCommandLoader.php',
         'Symfony\\Component\\Console\\Command\\Command' => __DIR__ . '/..' . '/symfony/console/Command/Command.php',
         'Symfony\\Component\\Console\\Command\\HelpCommand' => __DIR__ . '/..' . '/symfony/console/Command/HelpCommand.php',
         'Symfony\\Component\\Console\\Command\\ListCommand' => __DIR__ . '/..' . '/symfony/console/Command/ListCommand.php',
+        'Symfony\\Component\\Console\\Command\\LockableTrait' => __DIR__ . '/..' . '/symfony/console/Command/LockableTrait.php',
         'Symfony\\Component\\Console\\ConsoleEvents' => __DIR__ . '/..' . '/symfony/console/ConsoleEvents.php',
+        'Symfony\\Component\\Console\\DependencyInjection\\AddConsoleCommandPass' => __DIR__ . '/..' . '/symfony/console/DependencyInjection/AddConsoleCommandPass.php',
         'Symfony\\Component\\Console\\Descriptor\\ApplicationDescription' => __DIR__ . '/..' . '/symfony/console/Descriptor/ApplicationDescription.php',
         'Symfony\\Component\\Console\\Descriptor\\Descriptor' => __DIR__ . '/..' . '/symfony/console/Descriptor/Descriptor.php',
         'Symfony\\Component\\Console\\Descriptor\\DescriptorInterface' => __DIR__ . '/..' . '/symfony/console/Descriptor/DescriptorInterface.php',
@@ -962,7 +924,9 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Symfony\\Component\\Console\\Descriptor\\MarkdownDescriptor' => __DIR__ . '/..' . '/symfony/console/Descriptor/MarkdownDescriptor.php',
         'Symfony\\Component\\Console\\Descriptor\\TextDescriptor' => __DIR__ . '/..' . '/symfony/console/Descriptor/TextDescriptor.php',
         'Symfony\\Component\\Console\\Descriptor\\XmlDescriptor' => __DIR__ . '/..' . '/symfony/console/Descriptor/XmlDescriptor.php',
+        'Symfony\\Component\\Console\\EventListener\\ErrorListener' => __DIR__ . '/..' . '/symfony/console/EventListener/ErrorListener.php',
         'Symfony\\Component\\Console\\Event\\ConsoleCommandEvent' => __DIR__ . '/..' . '/symfony/console/Event/ConsoleCommandEvent.php',
+        'Symfony\\Component\\Console\\Event\\ConsoleErrorEvent' => __DIR__ . '/..' . '/symfony/console/Event/ConsoleErrorEvent.php',
         'Symfony\\Component\\Console\\Event\\ConsoleEvent' => __DIR__ . '/..' . '/symfony/console/Event/ConsoleEvent.php',
         'Symfony\\Component\\Console\\Event\\ConsoleExceptionEvent' => __DIR__ . '/..' . '/symfony/console/Event/ConsoleExceptionEvent.php',
         'Symfony\\Component\\Console\\Event\\ConsoleTerminateEvent' => __DIR__ . '/..' . '/symfony/console/Event/ConsoleTerminateEvent.php',
@@ -979,7 +943,6 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Symfony\\Component\\Console\\Formatter\\OutputFormatterStyleStack' => __DIR__ . '/..' . '/symfony/console/Formatter/OutputFormatterStyleStack.php',
         'Symfony\\Component\\Console\\Helper\\DebugFormatterHelper' => __DIR__ . '/..' . '/symfony/console/Helper/DebugFormatterHelper.php',
         'Symfony\\Component\\Console\\Helper\\DescriptorHelper' => __DIR__ . '/..' . '/symfony/console/Helper/DescriptorHelper.php',
-        'Symfony\\Component\\Console\\Helper\\DialogHelper' => __DIR__ . '/..' . '/symfony/console/Helper/DialogHelper.php',
         'Symfony\\Component\\Console\\Helper\\FormatterHelper' => __DIR__ . '/..' . '/symfony/console/Helper/FormatterHelper.php',
         'Symfony\\Component\\Console\\Helper\\Helper' => __DIR__ . '/..' . '/symfony/console/Helper/Helper.php',
         'Symfony\\Component\\Console\\Helper\\HelperInterface' => __DIR__ . '/..' . '/symfony/console/Helper/HelperInterface.php',
@@ -987,13 +950,11 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Symfony\\Component\\Console\\Helper\\InputAwareHelper' => __DIR__ . '/..' . '/symfony/console/Helper/InputAwareHelper.php',
         'Symfony\\Component\\Console\\Helper\\ProcessHelper' => __DIR__ . '/..' . '/symfony/console/Helper/ProcessHelper.php',
         'Symfony\\Component\\Console\\Helper\\ProgressBar' => __DIR__ . '/..' . '/symfony/console/Helper/ProgressBar.php',
-        'Symfony\\Component\\Console\\Helper\\ProgressHelper' => __DIR__ . '/..' . '/symfony/console/Helper/ProgressHelper.php',
         'Symfony\\Component\\Console\\Helper\\ProgressIndicator' => __DIR__ . '/..' . '/symfony/console/Helper/ProgressIndicator.php',
         'Symfony\\Component\\Console\\Helper\\QuestionHelper' => __DIR__ . '/..' . '/symfony/console/Helper/QuestionHelper.php',
         'Symfony\\Component\\Console\\Helper\\SymfonyQuestionHelper' => __DIR__ . '/..' . '/symfony/console/Helper/SymfonyQuestionHelper.php',
         'Symfony\\Component\\Console\\Helper\\Table' => __DIR__ . '/..' . '/symfony/console/Helper/Table.php',
         'Symfony\\Component\\Console\\Helper\\TableCell' => __DIR__ . '/..' . '/symfony/console/Helper/TableCell.php',
-        'Symfony\\Component\\Console\\Helper\\TableHelper' => __DIR__ . '/..' . '/symfony/console/Helper/TableHelper.php',
         'Symfony\\Component\\Console\\Helper\\TableSeparator' => __DIR__ . '/..' . '/symfony/console/Helper/TableSeparator.php',
         'Symfony\\Component\\Console\\Helper\\TableStyle' => __DIR__ . '/..' . '/symfony/console/Helper/TableStyle.php',
         'Symfony\\Component\\Console\\Input\\ArgvInput' => __DIR__ . '/..' . '/symfony/console/Input/ArgvInput.php',
@@ -1004,6 +965,7 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Symfony\\Component\\Console\\Input\\InputDefinition' => __DIR__ . '/..' . '/symfony/console/Input/InputDefinition.php',
         'Symfony\\Component\\Console\\Input\\InputInterface' => __DIR__ . '/..' . '/symfony/console/Input/InputInterface.php',
         'Symfony\\Component\\Console\\Input\\InputOption' => __DIR__ . '/..' . '/symfony/console/Input/InputOption.php',
+        'Symfony\\Component\\Console\\Input\\StreamableInputInterface' => __DIR__ . '/..' . '/symfony/console/Input/StreamableInputInterface.php',
         'Symfony\\Component\\Console\\Input\\StringInput' => __DIR__ . '/..' . '/symfony/console/Input/StringInput.php',
         'Symfony\\Component\\Console\\Logger\\ConsoleLogger' => __DIR__ . '/..' . '/symfony/console/Logger/ConsoleLogger.php',
         'Symfony\\Component\\Console\\Output\\BufferedOutput' => __DIR__ . '/..' . '/symfony/console/Output/BufferedOutput.php',
@@ -1016,16 +978,35 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Symfony\\Component\\Console\\Question\\ChoiceQuestion' => __DIR__ . '/..' . '/symfony/console/Question/ChoiceQuestion.php',
         'Symfony\\Component\\Console\\Question\\ConfirmationQuestion' => __DIR__ . '/..' . '/symfony/console/Question/ConfirmationQuestion.php',
         'Symfony\\Component\\Console\\Question\\Question' => __DIR__ . '/..' . '/symfony/console/Question/Question.php',
-        'Symfony\\Component\\Console\\Shell' => __DIR__ . '/..' . '/symfony/console/Shell.php',
         'Symfony\\Component\\Console\\Style\\OutputStyle' => __DIR__ . '/..' . '/symfony/console/Style/OutputStyle.php',
         'Symfony\\Component\\Console\\Style\\StyleInterface' => __DIR__ . '/..' . '/symfony/console/Style/StyleInterface.php',
         'Symfony\\Component\\Console\\Style\\SymfonyStyle' => __DIR__ . '/..' . '/symfony/console/Style/SymfonyStyle.php',
+        'Symfony\\Component\\Console\\Terminal' => __DIR__ . '/..' . '/symfony/console/Terminal.php',
         'Symfony\\Component\\Console\\Tester\\ApplicationTester' => __DIR__ . '/..' . '/symfony/console/Tester/ApplicationTester.php',
         'Symfony\\Component\\Console\\Tester\\CommandTester' => __DIR__ . '/..' . '/symfony/console/Tester/CommandTester.php',
+        'Symfony\\Component\\Debug\\BufferingLogger' => __DIR__ . '/..' . '/symfony/debug/BufferingLogger.php',
+        'Symfony\\Component\\Debug\\Debug' => __DIR__ . '/..' . '/symfony/debug/Debug.php',
+        'Symfony\\Component\\Debug\\DebugClassLoader' => __DIR__ . '/..' . '/symfony/debug/DebugClassLoader.php',
+        'Symfony\\Component\\Debug\\ErrorHandler' => __DIR__ . '/..' . '/symfony/debug/ErrorHandler.php',
+        'Symfony\\Component\\Debug\\ExceptionHandler' => __DIR__ . '/..' . '/symfony/debug/ExceptionHandler.php',
+        'Symfony\\Component\\Debug\\Exception\\ClassNotFoundException' => __DIR__ . '/..' . '/symfony/debug/Exception/ClassNotFoundException.php',
+        'Symfony\\Component\\Debug\\Exception\\ContextErrorException' => __DIR__ . '/..' . '/symfony/debug/Exception/ContextErrorException.php',
+        'Symfony\\Component\\Debug\\Exception\\FatalErrorException' => __DIR__ . '/..' . '/symfony/debug/Exception/FatalErrorException.php',
+        'Symfony\\Component\\Debug\\Exception\\FatalThrowableError' => __DIR__ . '/..' . '/symfony/debug/Exception/FatalThrowableError.php',
+        'Symfony\\Component\\Debug\\Exception\\FlattenException' => __DIR__ . '/..' . '/symfony/debug/Exception/FlattenException.php',
+        'Symfony\\Component\\Debug\\Exception\\OutOfMemoryException' => __DIR__ . '/..' . '/symfony/debug/Exception/OutOfMemoryException.php',
+        'Symfony\\Component\\Debug\\Exception\\SilencedErrorContext' => __DIR__ . '/..' . '/symfony/debug/Exception/SilencedErrorContext.php',
+        'Symfony\\Component\\Debug\\Exception\\UndefinedFunctionException' => __DIR__ . '/..' . '/symfony/debug/Exception/UndefinedFunctionException.php',
+        'Symfony\\Component\\Debug\\Exception\\UndefinedMethodException' => __DIR__ . '/..' . '/symfony/debug/Exception/UndefinedMethodException.php',
+        'Symfony\\Component\\Debug\\FatalErrorHandler\\ClassNotFoundFatalErrorHandler' => __DIR__ . '/..' . '/symfony/debug/FatalErrorHandler/ClassNotFoundFatalErrorHandler.php',
+        'Symfony\\Component\\Debug\\FatalErrorHandler\\FatalErrorHandlerInterface' => __DIR__ . '/..' . '/symfony/debug/FatalErrorHandler/FatalErrorHandlerInterface.php',
+        'Symfony\\Component\\Debug\\FatalErrorHandler\\UndefinedFunctionFatalErrorHandler' => __DIR__ . '/..' . '/symfony/debug/FatalErrorHandler/UndefinedFunctionFatalErrorHandler.php',
+        'Symfony\\Component\\Debug\\FatalErrorHandler\\UndefinedMethodFatalErrorHandler' => __DIR__ . '/..' . '/symfony/debug/FatalErrorHandler/UndefinedMethodFatalErrorHandler.php',
         'Symfony\\Component\\EventDispatcher\\ContainerAwareEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/ContainerAwareEventDispatcher.php',
         'Symfony\\Component\\EventDispatcher\\Debug\\TraceableEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/TraceableEventDispatcher.php',
         'Symfony\\Component\\EventDispatcher\\Debug\\TraceableEventDispatcherInterface' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/TraceableEventDispatcherInterface.php',
         'Symfony\\Component\\EventDispatcher\\Debug\\WrappedListener' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/WrappedListener.php',
+        'Symfony\\Component\\EventDispatcher\\DependencyInjection\\ExtractingEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/DependencyInjection/RegisterListenersPass.php',
         'Symfony\\Component\\EventDispatcher\\DependencyInjection\\RegisterListenersPass' => __DIR__ . '/..' . '/symfony/event-dispatcher/DependencyInjection/RegisterListenersPass.php',
         'Symfony\\Component\\EventDispatcher\\Event' => __DIR__ . '/..' . '/symfony/event-dispatcher/Event.php',
         'Symfony\\Component\\EventDispatcher\\EventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/EventDispatcher.php',
@@ -1033,20 +1014,37 @@ class ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b
         'Symfony\\Component\\EventDispatcher\\EventSubscriberInterface' => __DIR__ . '/..' . '/symfony/event-dispatcher/EventSubscriberInterface.php',
         'Symfony\\Component\\EventDispatcher\\GenericEvent' => __DIR__ . '/..' . '/symfony/event-dispatcher/GenericEvent.php',
         'Symfony\\Component\\EventDispatcher\\ImmutableEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/ImmutableEventDispatcher.php',
+        'Symfony\\Component\\Finder\\Comparator\\Comparator' => __DIR__ . '/..' . '/symfony/finder/Comparator/Comparator.php',
+        'Symfony\\Component\\Finder\\Comparator\\DateComparator' => __DIR__ . '/..' . '/symfony/finder/Comparator/DateComparator.php',
+        'Symfony\\Component\\Finder\\Comparator\\NumberComparator' => __DIR__ . '/..' . '/symfony/finder/Comparator/NumberComparator.php',
+        'Symfony\\Component\\Finder\\Exception\\AccessDeniedException' => __DIR__ . '/..' . '/symfony/finder/Exception/AccessDeniedException.php',
+        'Symfony\\Component\\Finder\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/finder/Exception/ExceptionInterface.php',
+        'Symfony\\Component\\Finder\\Finder' => __DIR__ . '/..' . '/symfony/finder/Finder.php',
+        'Symfony\\Component\\Finder\\Glob' => __DIR__ . '/..' . '/symfony/finder/Glob.php',
+        'Symfony\\Component\\Finder\\Iterator\\CustomFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/CustomFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\DateRangeFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/DateRangeFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\DepthRangeFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/DepthRangeFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\ExcludeDirectoryFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/ExcludeDirectoryFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\FileTypeFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/FileTypeFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\FilecontentFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/FilecontentFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\FilenameFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/FilenameFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\FilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/FilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\MultiplePcreFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/MultiplePcreFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\PathFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/PathFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\RecursiveDirectoryIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/RecursiveDirectoryIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\SizeRangeFilterIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/SizeRangeFilterIterator.php',
+        'Symfony\\Component\\Finder\\Iterator\\SortableIterator' => __DIR__ . '/..' . '/symfony/finder/Iterator/SortableIterator.php',
+        'Symfony\\Component\\Finder\\SplFileInfo' => __DIR__ . '/..' . '/symfony/finder/SplFileInfo.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
-        'ZendXml\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/zendframework/zendxml/library/ZendXml/Exception/ExceptionInterface.php',
-        'ZendXml\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/zendframework/zendxml/library/ZendXml/Exception/InvalidArgumentException.php',
-        'ZendXml\\Exception\\RuntimeException' => __DIR__ . '/..' . '/zendframework/zendxml/library/ZendXml/Exception/RuntimeException.php',
-        'ZendXml\\Security' => __DIR__ . '/..' . '/zendframework/zendxml/library/ZendXml/Security.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6edea6294a88689e3f5c56484bb70c9b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbdc3716ceecc7570f8ff9a8407f0ca0e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbdc3716ceecc7570f8ff9a8407f0ca0e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitbdc3716ceecc7570f8ff9a8407f0ca0e::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitbdc3716ceecc7570f8ff9a8407f0ca0e::$classMap;
 
         }, null, ClassLoader::class);
     }

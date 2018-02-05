@@ -25,18 +25,14 @@ class SubtaskTaskConversionModel extends Base
         $time = time();
         $subtask = $this->subtaskModel->getById($subtask_id);
         $parent_task = $this->taskFinderModel->getById($subtask['task_id']);
+
         $task_id = $this->taskCreationModel->create(array(
             'project_id' => $project_id,
             'title' => ($is_link?$parent_task['title'].' < ':'').$subtask['title'].($is_link?' >':''),
             'time_estimated' => $subtask['time_estimated'],
             'time_spent' => $subtask['time_spent'],
             'owner_id' => $subtask['user_id'],
-            'description' => $parent_task['description'],
-            'color_id' => $parent_task['color_id'],
-            'category_id' => $parent_task['category_id'],
-            'swimlane_id' => $parent_task['swimlane_id'],
-            'column_id' => $parent_task['column_id'],
-            'reference' => $parent_task['reference'],
+            'category_id' => $parent_task['category_id']
         ));
         if ($task_id !== false) {
             if ($is_link) {

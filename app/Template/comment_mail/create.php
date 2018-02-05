@@ -6,8 +6,21 @@
     <?= $this->form->hidden('task_id', $values) ?>
     <?= $this->form->hidden('user_id', $values) ?>
 
-    <?= $this->form->label(t('Email'), 'email') ?>
-    <?= $this->form->email('email', $values, $errors, array('autofocus', 'required', 'tabindex="1"')) ?>
+    <?= $this->form->label(t('Email'), 'emails') ?>
+    <?= $this->form->text('emails', $values, $errors, array('autofocus', 'required', 'tabindex="1"')) ?>
+
+    <?php if (! empty($members)): ?>
+        <div class="dropdown">
+            <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-address-card-o"></i><i class="fa fa-caret-down"></i></a>
+            <ul>
+                <?php foreach ($members as $member): ?>
+                    <li data-email="<?= $this->text->e($member['email']) ?>" class="js-autocomplete-email">
+                        <?= $this->text->e($this->user->getFullname($member)) ?>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </div>
+    <?php endif ?>
 
     <?php if (! empty($members)): ?>
         <div class="dropdown">

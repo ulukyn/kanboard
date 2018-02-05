@@ -23,6 +23,7 @@ class SubtaskConverterController extends BaseController
 
     public function show_link()
     {
+        $project = $this->getProject();
         $task = $this->getTask();
         $subtask = $this->getSubtask($task);
 

@@ -5,6 +5,7 @@ namespace Kanboard\ServiceProvider;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Kanboard\Action\TaskAssignColorOnDueDate;
+use Kanboard\Action\TaskAssignColorOnStartDate;
 use Kanboard\Action\TaskAssignColorPriority;
 use Kanboard\Action\TaskAssignDueDateOnCreation;
 use Kanboard\Action\TaskMoveColumnClosed;
@@ -41,6 +42,9 @@ use Kanboard\Action\TaskCloseNoActivityColumn;
 use Kanboard\Action\TaskCloseNotMovedColumn;
 use Kanboard\Action\TaskAssignColorSwimlane;
 use Kanboard\Action\TaskAssignPrioritySwimlane;
+use Kanboard\Action\SubtaskTimerMoveTaskColumn;
+use Kanboard\Action\StopSubtaskTimerMoveTaskColumn;
+use Kanboard\Action\TaskMoveColumnOnStartDate;
 
 /**
  * Action Provider
@@ -96,6 +100,10 @@ class ActionProvider implements ServiceProviderInterface
         $container['actionManager']->register(new TaskAssignColorSwimlane($container));
         $container['actionManager']->register(new TaskAssignPrioritySwimlane($container));
         $container['actionManager']->register(new TaskAssignColorOnDueDate($container));
+        $container['actionManager']->register(new SubtaskTimerMoveTaskColumn($container));
+        $container['actionManager']->register(new StopSubtaskTimerMoveTaskColumn($container));
+        $container['actionManager']->register(new TaskMoveColumnOnStartDate($container));
+        $container['actionManager']->register(new TaskAssignColorOnStartDate($container));
 
         return $container;
     }

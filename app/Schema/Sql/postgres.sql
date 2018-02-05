@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.1
+-- Dumped from database version 9.6.4
+-- Dumped by pg_dump version 9.6.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -405,6 +405,37 @@ CREATE TABLE "plugin_schema_versions" (
 
 
 --
+-- Name: predefined_task_descriptions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "predefined_task_descriptions" (
+    "id" integer NOT NULL,
+    "project_id" integer NOT NULL,
+    "title" "text" NOT NULL,
+    "description" "text" NOT NULL
+);
+
+
+--
+-- Name: predefined_task_descriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "predefined_task_descriptions_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: predefined_task_descriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "predefined_task_descriptions_id_seq" OWNED BY "predefined_task_descriptions"."id";
+
+
+--
 -- Name: project_activities; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -707,7 +738,6 @@ CREATE TABLE "projects" (
     "last_modified" bigint DEFAULT 0,
     "is_public" boolean DEFAULT false,
     "is_private" boolean DEFAULT false,
-    "is_everybody_allowed" boolean DEFAULT false,
     "description" "text",
     "identifier" character varying(50) DEFAULT ''::character varying,
     "start_date" character varying(10) DEFAULT ''::character varying,
@@ -716,7 +746,8 @@ CREATE TABLE "projects" (
     "priority_default" integer DEFAULT 0,
     "priority_start" integer DEFAULT 0,
     "priority_end" integer DEFAULT 3,
-    "email" character varying(255)
+    "email" character varying(255),
+    "predefined_email_subjects" "text"
 );
 
 
@@ -780,6 +811,17 @@ ALTER SEQUENCE "remember_me_id_seq" OWNED BY "remember_me"."id";
 
 CREATE TABLE "schema_version" (
     "version" integer DEFAULT 0
+);
+
+
+--
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "sessions" (
+    "id" "text" NOT NULL,
+    "expire_at" integer NOT NULL,
+    "data" "text" DEFAULT ''::"text"
 );
 
 
@@ -1351,6 +1393,13 @@ ALTER TABLE ONLY "links" ALTER COLUMN "id" SET DEFAULT "nextval"('"links_id_seq"
 
 
 --
+-- Name: predefined_task_descriptions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "predefined_task_descriptions" ALTER COLUMN "id" SET DEFAULT "nextval"('"predefined_task_descriptions_id_seq"'::"regclass");
+
+
+--
 -- Name: project_activities id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1665,6 +1714,14 @@ ALTER TABLE ONLY "plugin_schema_versions"
 
 
 --
+-- Name: predefined_task_descriptions predefined_task_descriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "predefined_task_descriptions"
+    ADD CONSTRAINT "predefined_task_descriptions_pkey" PRIMARY KEY ("id");
+
+
+--
 -- Name: project_activities project_activities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1798,6 +1855,14 @@ ALTER TABLE ONLY "projects"
 
 ALTER TABLE ONLY "remember_me"
     ADD CONSTRAINT "remember_me_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "sessions"
+    ADD CONSTRAINT "sessions_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -2199,6 +2264,14 @@ ALTER TABLE ONLY "password_reset"
 
 
 --
+-- Name: predefined_task_descriptions predefined_task_descriptions_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "predefined_task_descriptions"
+    ADD CONSTRAINT "predefined_task_descriptions_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "projects"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: project_activities project_activities_creator_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2550,8 +2623,8 @@ ALTER TABLE ONLY "user_has_unread_notifications"
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.1
+-- Dumped from database version 9.6.4
+-- Dumped by pg_dump version 9.6.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2571,8 +2644,8 @@ INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('board_high
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('board_public_refresh_interval', '60', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('board_private_refresh_interval', '10', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('board_columns', '', 0, 0);
-INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('webhook_token', 'd5afda7f7444f8600138b276ae9a3d1e36781c3111ed35a55fc1a3ca3ff5', 0, 0);
-INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('api_token', '8814fa59e03411e82772826d166f5cf444324efefcf334ae64b4921d53f3', 0, 0);
+INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('webhook_token', '1ff45d3f47d1dc00a9bd51a335d2fe705714e4c4073d486c2c8e6e161c28', 0, 0);
+INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('api_token', '261e6e871a415183978e3a25f65ddb63c93e680931bef4c6b1728ed1a07c', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('application_language', 'en_US', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('application_timezone', 'UTC', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('application_url', '', 0, 0);
@@ -2600,8 +2673,8 @@ INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('password_r
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.1
+-- Dumped from database version 9.6.4
+-- Dumped by pg_dump version 9.6.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2641,4 +2714,4 @@ SELECT pg_catalog.setval('links_id_seq', 11, true);
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO users (username, password, role) VALUES ('admin', '$2y$10$0WR8YPAwOCrDQTRFjji6u.krMgA4PcVsmw3ypmXAkqFKFLwnFOpAG', 'app-admin');INSERT INTO schema_version VALUES ('102');
+INSERT INTO users (username, password, role) VALUES ('admin', '$2y$10$j/bvk6WblIHAyAJEBXLgBeoOjJ1oHsuA0VTUf85lRYOJ4czssCuI6', 'app-admin');INSERT INTO schema_version VALUES ('106');
