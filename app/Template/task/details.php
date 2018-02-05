@@ -22,7 +22,7 @@
                     </li>
                     <?php if (! empty($task['reference'])): ?>
                         <li>
-                            <strong><?= t('Reference:') ?></strong> <span><?= $this->text->e($task['reference']) ?></span>
+                            <strong><?= t('Reference:') ?></strong> <span><?= $this->task->renderReference($task) ?></span>
                         </li>
                     <?php endif ?>
                     <?php if (! empty($task['score'])): ?>
@@ -95,7 +95,7 @@
                     <?php if ($task['date_due']): ?>
                     <li>
                         <strong><?= t('Due date:') ?></strong>
-                        <span><?= $this->dt->date($task['date_due']) ?></span>
+                        <span><?= $this->dt->datetime($task['date_due']) ?></span>
                     </li>
                     <?php endif ?>
                     <?php if ($task['time_estimated']): ?>

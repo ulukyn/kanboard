@@ -10,11 +10,9 @@ php:
   - 5.6
   - 5.5
   - 5.4
-  - 5.3
 
 env:
   - DB=sqlite
-  - DB=mysql
   - DB=postgres
 
 matrix:
@@ -23,10 +21,10 @@ matrix:
 before_script:
   - if [[ $TRAVIS_PHP_VERSION != 7.x ]]; then phpenv config-rm xdebug.ini; fi
   - phpenv config-add tests/php.ini
-  - composer install
+  - composer install --dev
   - npm install
 
 script:
   - ./node_modules/.bin/jshint assets/js/{core,components}
-  - phpunit -c tests/units.$DB.xml
-  - phpunit tests/configtest
+  - ./vendor/bin/phpunit -c tests/units.$DB.xml
+  - ./vendor/bin/phpunit tests/configtest

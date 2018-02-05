@@ -8,7 +8,33 @@ use PDO;
 use Kanboard\Core\Security\Token;
 use Kanboard\Core\Security\Role;
 
-const VERSION = 101;
+const VERSION = 105;
+
+function version_105(PDO $pdo)
+{
+    $pdo->exec('CREATE TABLE predefined_task_descriptions (
+        id SERIAL PRIMARY KEY,
+        project_id INTEGER NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL,
+        FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE
+    )');
+}
+
+function version_104(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE projects DROP COLUMN is_everybody_allowed');
+}
+
+function version_103(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE projects ADD COLUMN predefined_email_subjects TEXT');
+}
+
+function version_102(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE column_has_move_restrictions ADD COLUMN only_assigned BOOLEAN DEFAULT FALSE');
+}
 
 function version_101(PDO $pdo)
 {

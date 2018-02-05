@@ -32,7 +32,7 @@
     <div class="task-board-icons-row">
         <?php if ($task['reference']): ?>
             <span class="task-board-reference" title="<?= t('Reference') ?>">
-                <?= $this->text->e($task['reference']) ?>
+                <?= $this->task->renderReference($task) ?>
             </span>
         <?php endif ?>
     </div>
@@ -58,14 +58,14 @@
 
         <?php if (! empty($task['date_due'])): ?>
             <span class="task-date
-                <?php if (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
-                     task-date-today
-                <?php elseif (time() > $task['date_due']): ?>
+                <?php if (time() > $task['date_due']): ?>
                      task-date-overdue
+                <?php elseif (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
+                     task-date-today
                 <?php endif ?>
                 ">
                 <i class="fa fa-calendar"></i>
-                <?= $this->dt->date($task['date_due']) ?>
+                <?= $this->dt->datetime($task['date_due']) ?>
             </span>
         <?php endif ?>
     </div>

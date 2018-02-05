@@ -37,12 +37,13 @@ class TaskExportTest extends Base
             'swimlane_id' => 2,
             'title' => 'Task 2',
             'date_due' => time(),
+            'tags' => array('tag 1', 'tag 2'),
         )));
 
         $report = $taskExport->export(1, date('Y-m-d'), date('Y-m-d'));
 
         $this->assertCount(3, $report);
-        $this->assertCount(22, $report[0]);
+        $this->assertCount(24, $report[0]);
         $this->assertEquals('Task Id', $report[0][0]);
 
         $this->assertEquals(1, $report[1][0]);
@@ -70,12 +71,14 @@ class TaskExportTest extends Base
         $this->assertEquals('Yellow', $report[2][8]);
 
         $this->assertEquals('', $report[1][9]);
-        $this->assertEquals(date('m/d/Y').' 00:00', $report[2][9]);
+        $this->assertEquals(date('m/d/Y H:i'), $report[2][9]);
 
         $this->assertEquals(3, $report[1][21]);
         $this->assertEquals(0, $report[2][21]);
 
         $this->assertEquals(2.5, $report[1][20]);
         $this->assertEquals(0, $report[2][20]);
+
+        $this->assertEquals('tag 1, tag 2', $report[2][23]);
     }
 }

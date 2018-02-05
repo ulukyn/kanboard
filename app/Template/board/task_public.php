@@ -12,14 +12,18 @@
     </div>
 
     <?= $this->hook->render('template:board:public:task:before-title', array('task' => $task)) ?>
+    <?php if (false): ?>
     <div class="task-board-title">
         <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'readonly', array('task_id' => $task['id'], 'token' => $project['token'])) ?>
     </div>
+     <?php endif ?>
     <?= $this->hook->render('template:board:public:task:after-title', array('task' => $task)) ?>
 
+	<?php if (false): ?>
     <?= $this->render('board/task_footer', array(
         'task' => $task,
         'not_editable' => $not_editable,
         'project' => $project,
     )) ?>
+     <?php endif ?>
 </div>

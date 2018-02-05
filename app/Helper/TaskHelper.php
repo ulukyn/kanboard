@@ -61,6 +61,30 @@ class TaskHelper extends Base
         return $this->helper->form->textEditor('description', $values, $errors, array('tabindex' => 2));
     }
 
+    public function renderDescriptionTemplateDropdown($projectId)
+    {
+        $templates = $this->predefinedTaskDescriptionModel->getAll($projectId);
+
+        if (! empty($templates)) {
+            $html = '<div class="dropdown dropdown-smaller">';
+            $html .= '<a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>'.t('Template for the task description').' <i class="fa fa-caret-down" aria-hidden="true"></i></a>';
+            $html .= '<ul>';
+
+            foreach ($templates as  $template) {
+                $html .= '<li>';
+                $html .= '<a href="#" data-template-target="textarea[name=description]" data-template="'.$this->helper->text->e($template['description']).'" class="js-template">';
+                $html .= $this->helper->text->e($template['title']);
+                $html .= '</a>';
+                $html .= '</li>';
+            }
+
+            $html .= '</ul></div>';
+            return $html;
+        }
+
+        return '';
+    }
+
     public function renderTagField(array $project, array $tags = array())
     {
         $options = $this->tagModel->getAssignableList($project['id']);
@@ -93,6 +117,10 @@ class TaskHelper extends Base
 
     public function renderAssigneeField(array $users, array $values, array $errors = array(), array $attributes = array())
     {
+        if (isset($values['project_id']) && ! $this->helper->projectRole->canChangeAssignee($values)) {
+            return '';
+        }
+
         $attributes = array_merge(array('tabindex="3"'), $attributes);
 
         $html = $this->helper->form->label(t('Assignee'), 'owner_id');
@@ -204,7 +232,7 @@ class TaskHelper extends Base
     public function renderDueDateField(array $values, array $errors = array(), array $attributes = array())
     {
         $attributes = array_merge(array('tabindex="9"'), $attributes);
-        return $this->helper->form->date(t('Due Date'), 'date_due', $values, $errors, $attributes);
+        return $this->helper->form->datetime(t('Due Date'), 'date_due', $values, $errors, $attributes);
     }
 
     public function renderPriority($priority)
@@ -216,6 +244,21 @@ class TaskHelper extends Base
         return $html;
     }
 
+    public function renderReference(array $task)
+    {
+        if (! empty($task['reference'])) {
+            $reference = $this->helper->text->e($task['reference']);
+
+            if (filter_var($task['reference'], FILTER_VALIDATE_URL) !== false) {
+                return sprintf('<a href="%s" target=_blank">%s</a>', $reference, $reference);
+            }
+
+            return $reference;
+        }
+
+        return '';
+    }
+
     public function getProgress($task)
     {
         if (! isset($this->columns[$task['project_id']])) {
@@ -225,31 +268,57 @@ class TaskHelper extends Base
         return $this->taskModel->getProgress($task, $this->columns[$task['project_id']]);
     }
 
-    public function getNewTaskDropdown($projectId, $swimlaneId, $columnId)
+    public function getNewBoardTaskButton(array $swimlane, array $column)
     {
-        $providers = $this->externalTaskManager->getProvidersList();
+        $html = '<div class="board-add-icon">';
+        $providers = $this->externalTaskManager->getProviders();
 
         if (empty($providers)) {
-            return '';
-        }
+            $html .= $this->helper->modal->largeIcon(
+                'plus',
+                t('Add a new task'),
+                'TaskCreationController',
+                'show', array(
+                    'project_id'  => $column['project_id'],
+                    'column_id'   => $column['id'],
+                    'swimlane_id' => $swimlane['id'],
+                )
+            );
+        } else {
+            $html .= '<div class="dropdown">';
+            $html .= '<a href="#" class="dropdown-menu"><i class="fa fa-plus" aria-hidden="true"></i></a><ul>';
 
-        $html = '<small class="pull-right"><div class="dropdown">';
-        $html .= '<a href="#" class="dropdown-menu"><i class="fa fa-cloud-download" aria-hidden="true"></i> <i class="fa fa-caret-down"></i></a><ul>';
-
-        foreach ($providers as $providerName) {
-            $link = $this->helper->url->link(
-                t('New External Task: %s', $providerName),
-                'ExternalTaskCreationController',
-                'step1',
-                array('project_id' => $projectId, 'swimlane_id' => $swimlaneId, 'column_id' => $columnId, 'provider_name' => $providerName),
-                false,
-                'js-modal-replace'
+            $link = $this->helper->modal->large(
+                'plus',
+                t('Add a new Kanboard task'),
+                'TaskCreationController',
+                'show', array(
+                    'project_id'  => $column['project_id'],
+                    'column_id'   => $column['id'],
+                    'swimlane_id' => $swimlane['id'],
+                )
             );
 
-            $html .= '<li><i class="fa fa-fw fa-plus-square" aria-hidden="true"></i> '.$link.'</li>';
+            $html .= '<li>'.$link.'</li>';
+
+            foreach ($providers as $provider) {
+                $link = $this->helper->url->link(
+                    $provider->getMenuAddLabel(),
+                    'ExternalTaskCreationController',
+                    'step1',
+                    array('project_id' => $column['project_id'], 'swimlane_id' => $swimlane['id'], 'column_id' => $column['id'], 'provider_name' => $provider->getName()),
+                    false,
+                    'js-modal-large'
+                );
+
+                $html .= '<li>'.$provider->getIcon().' '.$link.'</li>';
+            }
+
+            $html .= '</ul></div>';
         }
 
-        $html .= '</ul></div></small>';
+        $html .= '</div>';
+
         return $html;
     }
 }

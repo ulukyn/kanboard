@@ -3,6 +3,7 @@
 namespace Kanboard\Helper;
 
 use Kanboard\Core\Base;
+use Kanboard\Model\SubtaskModel;
 
 /**
  * Subtask helpers
@@ -45,26 +46,30 @@ class SubtaskHelper extends Base
      * Get the link to toggle subtask status
      *
      * @access public
-     * @param  array    $task
-     * @param  array    $subtask
+     * @param  array  $task
+     * @param  array  $subtask
+     * @param  string $fragment
+     * @param  int    $userId
      * @return string
      */
-    public function renderToggleStatus(array $task, array $subtask)
+    public function renderToggleStatus(array $task, array $subtask, $fragment = '', $userId = 0)
     {
         if (! $this->helper->user->hasProjectAccess('SubtaskController', 'edit', $task['project_id'])) {
             $html = $this->renderTitle($subtask);
         } else {
             $title = $this->renderTitle($subtask);
             $params = array(
-                'project_id'    => $task['project_id'],
-                'task_id'       => $subtask['task_id'],
-                'subtask_id'    => $subtask['id'],
+                'project_id' => $task['project_id'],
+                'task_id'    => $subtask['task_id'],
+                'subtask_id' => $subtask['id'],
+                'user_id'    => $userId,
+                'fragment'   => $fragment,
             );
 
             if ($subtask['status'] == 0 && $this->hasSubtaskInProgress()) {
-                $html = $this->helper->url->link($title, 'SubtaskRestrictionController', 'show', $params, false, 'js-modal-confirm');
+                $html = $this->helper->url->link($title, 'SubtaskRestrictionController', 'show', $params, false, 'js-modal-confirm', $this->getSubtaskTooltip($subtask));
             } else {
-                $html = $this->helper->url->link($title, 'SubtaskStatusController', 'change', $params, false, 'js-subtask-toggle-status');
+                $html = $this->helper->url->link($title, 'SubtaskStatusController', 'change', $params, false, 'js-subtask-toggle-status', $this->getSubtaskTooltip($subtask));
             }
         }
 
@@ -83,6 +88,17 @@ class SubtaskHelper extends Base
         }
 
         $html .= '</span>';
+
+        return $html;
+    }
+
+    public function renderBulkTitleField(array $values, array $errors = array(), array $attributes = array())
+    {
+        $attributes = array_merge(array('tabindex="1"', 'required'), $attributes);
+
+        $html = $this->helper->form->label(t('Title'), 'title');
+        $html .= $this->helper->form->textarea('title', $values, $errors, $attributes);
+        $html .= '<p class="form-help">'.t('Enter one subtask by line.').'</p>';
 
         return $html;
     }
@@ -131,5 +147,19 @@ class SubtaskHelper extends Base
         $html .= ' '.t('hours');
 
         return $html;
+    }
+
+    public function getSubtaskTooltip(array $subtask)
+    {
+        switch ($subtask['status']) {
+            case SubtaskModel::STATUS_TODO:
+                return t('Subtask not started');
+            case SubtaskModel::STATUS_INPROGRESS:
+                return t('Subtask currently in progress');
+            case SubtaskModel::STATUS_DONE:
+                return t('Subtask completed');
+        }
+
+        return '';
     }
 }

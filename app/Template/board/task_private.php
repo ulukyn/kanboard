@@ -19,6 +19,7 @@
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse"></i></div>
             <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
                 <?= $this->render('task/dropdown', array('task' => $task)) ?>
+                <?= $this->modal->large('edit', '', 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
             <?php else: ?>
                 <strong><?= '#'.$task['id'] ?></strong>
             <?php endif ?>
@@ -28,7 +29,7 @@
                     <?= $this->text->e($this->user->getInitials($task['assignee_name'] ?: $task['assignee_username'])) ?>
                 </span> -
             <?php endif ?>
-            <?= $this->text->e($task['title']) ?>
+            <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', $this->text->e($task['title'])) ?>
         </div>
     <?php else: ?>
         <div class="task-board-expanded">
@@ -36,6 +37,7 @@
             <div class="task-board-header">
                 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
                     <?= $this->render('task/dropdown', array('task' => $task)) ?>
+                    <?= $this->modal->large('edit', '', 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
                 <?php else: ?>
                     <strong><?= '#'.$task['id'] ?></strong>
                 <?php endif ?>
@@ -51,7 +53,7 @@
 
             <?= $this->hook->render('template:board:private:task:before-title', array('task' => $task)) ?>
             <div class="task-board-title">
-                <?= $this->text->e($task['title']) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
             </div>
             <?= $this->hook->render('template:board:private:task:after-title', array('task' => $task)) ?>
 

@@ -93,20 +93,22 @@ class ProjectPermissionModel extends Base
         return $members;
     }
 
-    /**
-     * Return true if everybody is allowed for the project
-     *
-     * @access public
-     * @param  integer   $project_id   Project id
-     * @return bool
-     */
-    public function isEverybodyAllowed($project_id)
+    public function getMembers($project_id)
     {
-        return $this->db
-                    ->table(ProjectModel::TABLE)
-                    ->eq('id', $project_id)
-                    ->eq('is_everybody_allowed', 1)
-                    ->exists();
+        $userMembers = $this->projectUserRoleModel->getUsers($project_id);
+        $groupMembers = $this->projectGroupRoleModel->getUsers($project_id);
+
+        $userMembers = array_column_index_unique($userMembers, 'username');
+        $groupMembers = array_column_index_unique($groupMembers, 'username');
+        return array_merge($userMembers, $groupMembers);
+    }
+
+    public function getMembersWithEmail($project_id)
+    {
+        $members = $this->getMembers($project_id);
+        return array_filter($members, function (array $user) {
+            return ! empty($user['email']);
+        });
     }
 
     /**

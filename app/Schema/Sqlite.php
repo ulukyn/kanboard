@@ -8,7 +8,55 @@ use Kanboard\Core\Security\Token;
 use Kanboard\Core\Security\Role;
 use PDO;
 
-const VERSION = 112;
+const VERSION = 116;
+
+function version_116(PDO $pdo)
+{
+    $pdo->exec('CREATE TABLE predefined_task_descriptions (
+        id INTEGER PRIMARY KEY,
+        project_id INTEGER NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL,
+        FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE
+    )');
+}
+
+function version_115(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE projects ADD COLUMN predefined_email_subjects TEXT');
+}
+
+function version_114(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE column_has_move_restrictions ADD COLUMN only_assigned INTEGER DEFAULT 0');
+}
+
+function version_113(PDO $pdo)
+{
+    $pdo->exec(
+        'ALTER TABLE project_activities RENAME TO project_activities_bak'
+    );
+    $pdo->exec("
+      CREATE TABLE project_activities (
+          id INTEGER PRIMARY KEY,
+          date_creation INTEGER NOT NULL,
+          event_name TEXT NOT NULL,
+          creator_id INTEGER NOT NULL,
+          project_id INTEGER NOT NULL,
+          task_id INTEGER NOT NULL,
+          data TEXT,
+          FOREIGN KEY(creator_id) REFERENCES users(id) ON DELETE CASCADE,
+          FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
+          FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
+      )
+    ");
+    $pdo->exec(
+        'INSERT INTO project_activities SELECT * FROM project_activities_bak'
+    );
+    $pdo->exec(
+        'DROP TABLE project_activities_bak'
+    );
+}
 
 function version_112(PDO $pdo)
 {
@@ -951,7 +999,7 @@ function version_33(PDO $pdo)
             id INTEGER PRIMARY KEY,
             date_creation INTEGER NOT NULL,
             event_name TEXT NOT NULL,
-            creator_id INTEGE NOT NULL,
+            creator_id INTEGER NOT NULL,
             project_id INTEGER NOT NULL,
             task_id INTEGER NOT NULL,
             data TEXT,

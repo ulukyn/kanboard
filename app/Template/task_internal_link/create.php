@@ -5,7 +5,6 @@
 <form action="<?= $this->url->href('TaskInternalLinkController', 'save', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>" method="post" autocomplete="off">
 
     <?= $this->form->csrf() ?>
-    <?= $this->form->hidden('task_id', array('task_id' => $task['id'])) ?>
     <?= $this->form->hidden('opposite_task_id', $values) ?>
 
     <?= $this->form->label(t('Label'), 'link_id') ?>
@@ -24,6 +23,8 @@
             'data-search-url="'.$this->url->href('TaskAjaxController', 'autocomplete', array('exclude_task_id' => $task['id'])).'"',
         ),
         'autocomplete') ?>
+
+    <?= $this->form->checkbox('another_tasklink', t('Create another link'), 1, isset($values['another_tasklink']) && $values['another_tasklink'] == 1) ?>
 
     <?= $this->modal->submitButtons() ?>
 </form>

@@ -47,6 +47,7 @@ class ClassProvider implements ServiceProviderInterface
             'LinkModel',
             'NotificationModel',
             'PasswordResetModel',
+            'PredefinedTaskDescriptionModel',
             'ProjectModel',
             'ProjectFileModel',
             'ProjectActivityModel',
@@ -118,6 +119,7 @@ class ClassProvider implements ServiceProviderInterface
             'TaskLinkValidator',
             'TaskValidator',
             'UserValidator',
+            'PredefinedTaskDescriptionValidator',
         ),
         'Import' => array(
             'TaskImport',
@@ -129,9 +131,10 @@ class ClassProvider implements ServiceProviderInterface
             'TransitionExport',
         ),
         'Pagination' => array(
-            'TaskPagination',
-            'SubtaskPagination',
+            'DashboardPagination',
             'ProjectPagination',
+            'SubtaskPagination',
+            'TaskPagination',
             'UserPagination',
         ),
         'Core' => array(

@@ -115,6 +115,7 @@ Attribute: **completed**
 The task reference is an external id of your task, by example a ticket number from another software.
 
 - Find tasks with a reference: `ref:1234` or `reference:TICKET-1234`
+- Wildcard search: `ref:TICKET-*`
 
 ### Search by category
 
@@ -164,6 +165,13 @@ Attribute: **comment**
 Attribute: **tag**
 
 - Example: `tag:"My tag"`
+
+### Search by score/complexity
+
+Attribute: **score** or **complexity**
+
+- `score:>=21`
+- `complexity:8`
 
 Activity stream search
 ----------------------

@@ -68,15 +68,17 @@ use Pimple\Container;
  * @property \Kanboard\Formatter\BoardTaskFormatter                  $boardTaskFormatter
  * @property \Kanboard\Formatter\GroupAutoCompleteFormatter          $groupAutoCompleteFormatter
  * @property \Kanboard\Formatter\ProjectActivityEventFormatter       $projectActivityEventFormatter
- * @property \Kanboard\Formatter\ProjectGanttFormatter               $projectGanttFormatter
+ * @property \Kanboard\Formatter\ProjectApiFormatter                 $projectApiFormatter
+ * @property \Kanboard\Formatter\ProjectsApiFormatter                $projectsApiFormatter
  * @property \Kanboard\Formatter\SubtaskListFormatter                $subtaskListFormatter
  * @property \Kanboard\Formatter\SubtaskTimeTrackingCalendarFormatter $subtaskTimeTrackingCalendarFormatter
+ * @property \Kanboard\Formatter\TaskApiFormatter                    $taskApiFormatter
+ * @property \Kanboard\Formatter\TasksApiFormatter                   $tasksApiFormatter
  * @property \Kanboard\Formatter\TaskAutoCompleteFormatter           $taskAutoCompleteFormatter
- * @property \Kanboard\Formatter\TaskCalendarFormatter               $taskCalendarFormatter
- * @property \Kanboard\Formatter\TaskGanttFormatter                  $taskGanttFormatter
  * @property \Kanboard\Formatter\TaskICalFormatter                   $taskICalFormatter
  * @property \Kanboard\Formatter\TaskListFormatter                   $taskListFormatter
  * @property \Kanboard\Formatter\TaskListSubtaskFormatter            $taskListSubtaskFormatter
+ * @property \Kanboard\Formatter\TaskListSubtaskAssigneeFormatter    $taskListSubtaskAssigneeFormatter
  * @property \Kanboard\Formatter\TaskSuggestMenuFormatter            $taskSuggestMenuFormatter
  * @property \Kanboard\Formatter\UserAutoCompleteFormatter           $userAutoCompleteFormatter
  * @property \Kanboard\Formatter\UserMentionFormatter                $userMentionFormatter
@@ -103,6 +105,7 @@ use Pimple\Container;
  * @property \Kanboard\Model\LinkModel                               $linkModel
  * @property \Kanboard\Model\NotificationModel                       $notificationModel
  * @property \Kanboard\Model\PasswordResetModel                      $passwordResetModel
+ * @property \Kanboard\Model\PredefinedTaskDescriptionModel          $predefinedTaskDescriptionModel
  * @property \Kanboard\Model\ProjectModel                            $projectModel
  * @property \Kanboard\Model\ProjectActivityModel                    $projectActivityModel
  * @property \Kanboard\Model\ProjectDuplicationModel                 $projectDuplicationModel
@@ -151,9 +154,10 @@ use Pimple\Container;
  * @property \Kanboard\Model\UserNotificationFilterModel             $userNotificationFilterModel
  * @property \Kanboard\Model\UserUnreadNotificationModel             $userUnreadNotificationModel
  * @property \Kanboard\Model\UserMetadataModel                       $userMetadataModel
+ * @property \Kanboard\Pagination\DashboardPagination                $dashboardPagination
+ * @property \Kanboard\Pagination\ProjectPagination                  $projectPagination
  * @property \Kanboard\Pagination\TaskPagination                     $taskPagination
  * @property \Kanboard\Pagination\SubtaskPagination                  $subtaskPagination
- * @property \Kanboard\Pagination\ProjectPagination                  $projectPagination
  * @property \Kanboard\Pagination\UserPagination                     $userPagination
  * @property \Kanboard\Validator\ActionValidator                     $actionValidator
  * @property \Kanboard\Validator\AuthValidator                       $authValidator
@@ -176,6 +180,7 @@ use Pimple\Container;
  * @property \Kanboard\Validator\TaskLinkValidator                   $taskLinkValidator
  * @property \Kanboard\Validator\TaskValidator                       $taskValidator
  * @property \Kanboard\Validator\UserValidator                       $userValidator
+ * @property \Kanboard\Validator\PredefinedTaskDescriptionValidator  $predefinedTaskDescriptionValidator
  * @property \Kanboard\Import\TaskImport                             $taskImport
  * @property \Kanboard\Import\UserImport                             $userImport
  * @property \Kanboard\Export\SubtaskExport                          $subtaskExport
