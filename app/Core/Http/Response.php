@@ -109,7 +109,8 @@ class Response extends Base
      */
     public function withXframe()
     {
-        $this->withHeader('X-Frame-Options', 'DENY');
+        //$this->withHeader('X-Frame-Options', 'DENY');
+	$this->withHeader('X-Frame-Options', 'ALLOW-FROM https://ts.ryzom.com/');
         return $this;
     }
 

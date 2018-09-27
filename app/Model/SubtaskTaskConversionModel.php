@@ -32,7 +32,13 @@ class SubtaskTaskConversionModel extends Base
             'time_estimated' => $subtask['time_estimated'],
             'time_spent' => $subtask['time_spent'],
             'owner_id' => $subtask['user_id'],
-            'category_id' => $parent_task['category_id']
+            'color_id' => $parent_task['color_id'],
+            'swimlane_id' => $parent_task['swimlane_id'],
+            'category_id' => $parent_task['category_id'],
+            'column_id' => $parent_task['column_id'],
+            'date_started' => $parent_task['date_started'],
+            'description' => $parent_task['description'],
+            'date_due' => $parent_task['date_due'],
         ));
         if ($task_id !== false) {
             if ($is_link) {

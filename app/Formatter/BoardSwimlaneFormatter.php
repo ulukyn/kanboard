@@ -101,6 +101,11 @@ class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
             foreach ($swimlane['columns'] as $columnIndex => &$column) {
                 $column['column_nb_tasks'] = $this->swimlanes[0]['columns'][$columnIndex]['column_nb_tasks'];
                 $column['column_nb_score'] = $this->swimlanes[0]['columns'][$columnIndex]['column_score'];
+
+                // Added by Ulukyn
+                $column['column_nb_tasks'] = $column['nb_tasks'];
+                $column['column_nb_score'] = $column['score'];
+                ///
             }
         }
 
